@@ -1,1 +1,256 @@
-{"sourceUri":"content:\/\/com.android.externalstorage.documents\/tree\/primary%3ADocuments%2FIMPORTANT!!%2FGithub","name":"Github","type":"directory","localRootPath":"\/storage\/emulated\/0\/Android\/media\/com.roxum\/Projects\/Github","syncedAt":1788305931600}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Rizky Aditya Saputra</title>
+    <!-- Favicon -->
+    <link rel="icon" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/svgs/solid/user-gear.svg" type="image/svg+xml">
+    <!-- FontAwesome Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Tombol Floating Melayang (Desktop & Mobile) -->
+<button class="floating-toggle-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Menu Navigasi">
+    <i class="fa-solid fa-bars" id="menuIcon"></i>
+</button>
+
+<!-- Menu Pop-up Navbar -->
+<nav id="navbar">
+    <div class="nav-logo">
+        Navigation Bar
+    </div>
+    <ul class="nav-links">
+        <li><a href="#tentang" onclick="closeMenu()"><i class="fa-solid fa-user-gear"></i> Tentang</a></li>
+        <li><a href="#pengalaman" onclick="closeMenu()"><i class="fa-solid fa-briefcase"></i> Pengalaman</a></li>
+        <li><a href="#pendidikan" onclick="closeMenu()"><i class="fa-solid fa-graduation-cap"></i> Pendidikan</a></li>
+        <li><a href="#keahlian" onclick="closeMenu()"><i class="fa-solid fa-screwdriver-wrench"></i> Keahlian</a></li>
+        <!-- Opsi Switch Theme -->
+        <li>
+            <button class="theme-toggle-option" onclick="toggleTheme()">
+                <i class="fa-solid fa-moon" id="themeIcon"></i> <span id="themeText">Mode Terang</span>
+            </button>
+        </li>
+        <li><a href="#kontak" class="nav-btn" onclick="closeMenu()"><i class="fa-solid fa-paper-plane"></i> Kontak</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <header>
+        <div class="profile-img-container">
+            <img src="foto-rizky.jpg.jpeg" alt="Rizky Aditya Saputra" class="profile-img">
+        </div>
+        <div class="header-text">
+            <h1>Rizky Aditya Saputra</h1>
+            <p><i class="fa-solid fa-graduation-cap"></i> Mahasiswa S1 Teknik Mesin & Operational/QC Specialist</p>
+            <a href="CV-Rizky-Aditya-Saputra.pdf" class="btn-download" download>
+                <i class="fa-solid fa-file-arrow-down"></i> Unduh CV (PDF)
+            </a>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="left-col">
+            <section id="tentang">
+                <h2><i class="fa-solid fa-user-gear"></i> Tentang Saya</h2>
+                <p class="summary-text">Sebagai lulusan sekolah menengah penerbangan dengan dasar pengetahuan teknis yang kuat, saya terbiasa bekerja secara teliti, terstruktur, dan sesuai prosedur. Memiliki motivasi tinggi untuk belajar hal baru, mudah beradaptasi dengan lingkungan kerja, serta berkomitmen untuk terus mengembangkan kemampuan. Siap memberikan kontribusi terbaik dalam menghadapi berbagai tantangan dalam dunia kerja.</p>
+            </section>
+
+            <section id="pengalaman">
+                <h2><i class="fa-solid fa-briefcase"></i> Proyek & Pengalaman Kerja</h2>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="company-logo-icon">
+                            <i class="fa-solid fa-microscope"></i>
+                        </div>
+                        <div>
+                            <h3>Helper QC</h3>
+                            <div class="subtitle">PT. Suprabakti Mandiri</div>
+                        </div>
+                    </div>
+                    <div class="date"><i class="fa-regular fa-calendar-days"></i> 2024 – 2025</div>
+                    <ul>
+                        <li>Bertanggung jawab melakukan inspeksi kualitas produk meliputi pemeriksaan dimensi, visual, dan hasil pengelasan sesuai standar yang ditetapkan.</li>
+                        <li>Melaksanakan uji <i>non-destructive test</i> (NDT) seperti <i>Magnetic Particle Test</i> (MPT) dan <i>Penetrant Test</i>.</li>
+                        <li>Berkoordinasi dengan tim produksi untuk menganalisis penyebab cacat produk dan mencari solusi perbaikan yang efektif.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="company-logo-icon">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                        </div>
+                        <div>
+                            <h3>Checker Gudang</h3>
+                            <div class="subtitle">PT. Paragon Technology And Innovation</div>
+                        </div>
+                    </div>
+                    <div class="date"><i class="fa-regular fa-calendar-days"></i> 2023 – 2024</div>
+                    <ul>
+                        <li>Bertanggung jawab melakukan pengambilan barang sesuai <i>request</i> yang tertera di kertas order, memastikan ketepatan jenis dan jumlah barang.</li>
+                        <li>Menyusun palet sesuai standar penataan di area gudang.</li>
+                        <li>Memindahkan barang menggunakan <i>hand pallet</i>, kemudian menaikkan barang ke truk pengangkut untuk proses pengiriman dari gudang ke pabrik produksi.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="company-logo-icon">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <div>
+                            <h3>Relationship Officer</h3>
+                            <div class="subtitle">PT. Bank Permata</div>
+                        </div>
+                    </div>
+                    <div class="date"><i class="fa-regular fa-calendar-days"></i> 2023</div>
+                    <ul>
+                        <li>Menjaga hubungan baik dengan nasabah serta calon nasabah untuk membangun kepercayaan dan loyalitas.</li>
+                        <li>Memberikan solusi keuangan yang sesuai dengan kebutuhan nasabah.</li>
+                        <li>Menjelaskan detail produk pinjaman dan kartu kredit dengan jelas dan informatif.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="pendidikan">
+                <h2><i class="fa-solid fa-graduation-cap"></i> Pendidikan</h2>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="company-logo-icon">
+                            <i class="fa-solid fa-university"></i>
+                        </div>
+                        <div>
+                            <h3>S1 Teknik Mesin</h3>
+                            <div class="subtitle">Universitas Pamulang</div>
+                        </div>
+                    </div>
+                    <div class="date"><i class="fa-regular fa-calendar-days"></i> 2025 – Sekarang</div>
+                    <p style="font-size:0.9rem;">Status: Mahasiswa Aktif (Semester 1)</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="company-logo-icon">
+                            <i class="fa-solid fa-plane"></i>
+                        </div>
+                        <div>
+                            <h3>Airframe & Powerplant</h3>
+                            <div class="subtitle">SMKN 6 Tangerang</div>
+                        </div>
+                    </div>
+                    <div class="date"><i class="fa-regular fa-calendar-days"></i> 2019 – 2022</div>
+                    <p style="font-size:0.9rem;">Status: Lulus (Nilai rata-rata US: 81.23)</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="right-col">
+            <section id="kontak">
+                <h2><i class="fa-solid fa-address-card"></i> Kontak</h2>
+                <div class="info-card-box">
+                    <ul class="info-list">
+                        <li>
+                            <i class="fa-solid fa-phone"></i>
+                            <div class="info-item">
+                                <strong>Telepon:</strong>
+                                <span>+62 851-5636-0758</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <div class="info-item">
+                                <strong>Email:</strong>
+                                <span>arrizky809@gmail.com</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div class="info-item">
+                                <strong>amriat:</strong>
+                                <span>Kp. Sukamandi, RT.001/RW.007, Kel. Karangsari, Kec. Neglasari, Kota Tangerang, Banten</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2><i class="fa-solid fa-id-card"></i> Data Diri</h2>
+                <div class="info-card-box">
+                    <ul class="info-list">
+                        <li>
+                            <i class="fa-solid fa-cake-candles"></i>
+                            <div class="info-item">
+                                <strong>Umur:</strong>
+                                <span> Tahun</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-ruler-vertical"></i>
+                            <div class="info-item">
+                                <strong>Postur:</strong>
+                                <span>165 cm / 59 kg</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-camera"></i>
+                            <div class="info-item">
+                                <strong>Hobi:</strong>
+                                <span>Fotografi & Memancing</span>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-language"></i>
+                            <div class="info-item">
+                                <strong>Bahasa:</strong>
+                                <span>Indonesia, Inggris</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="keahlian">
+                <h2><i class="fa-solid fa-screwdriver-wrench"></i> Keahlian & Tools</h2>
+                <div class="tools-grid">
+                    <div class="tool-badge"><i class="fa-solid fa-file-word"></i> MS Office</div>
+                    <div class="tool-badge"><i class="fa-solid fa-cube"></i> AutoCAD 2D</div>
+                    <div class="tool-badge"><i class="fa-solid fa-cubes"></i> Inventor 3D</div>
+                    <div class="tool-badge"><i class="fa-solid fa-fire"></i> Las GMAW 3G</div>
+                    <div class="tool-badge"><i class="fa-solid fa-language"></i> B. Inggris</div>
+                </div>
+            </section>
+
+            <section style="margin-top:25px;">
+                <h2><i class="fa-solid fa-certificate"></i> Sertifikat</h2>
+                <div class="cert-card">
+                    <i class="fa-solid fa-award"></i>
+                    <div>BNSP Las GMAW 3G</div>
+                </div>
+                <div class="cert-card">
+                    <i class="fa-solid fa-award"></i>
+                    <div>BNSP Penggambaran 3D dengan CAD</div>
+                </div>
+                <div class="cert-card">
+                    <i class="fa-solid fa-award"></i>
+                    <div>MS Office & Kesekretariatan Bagi Pemula</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Rizky Aditya Saputra. All Rights Reserved.</p>
+    </footer>
+</div>
+
+<!-- External JavaScript -->
+<script src="script.js"></script>
+</body>
+</html>
