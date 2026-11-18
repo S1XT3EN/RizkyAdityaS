@@ -1,183 +1,511 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="dark">
+<html lang="id" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rizky Aditya Saputra — Portfolio & Technical Spec</title>
+    <title>Rizky Aditya Saputra — Mechanical & Technical Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        obsidian: '#09090b',
+                        cardDark: '#18181b',
+                        borderDark: '#27272a',
+                        accentCyan: '#38bdf8',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Pola Dot-Grid Halus untuk Nuansa Technical Blueprint */
+        .bg-dot-grid {
+            background-image: radial-gradient(rgba(161, 161, 170, 0.16) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        html:not(.dark) .bg-dot-grid {
+            background-image: radial-gradient(rgba(24, 24, 27, 0.12) 1px, transparent 1px);
+        }
+
+        /* Kartu Bento dengan Efek Spotlight Kursor */
+        .bento-card {
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.25s ease, transform 0.25s ease;
+        }
+
+        .bento-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(
+                500px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+                rgba(56, 189, 248, 0.08),
+                transparent 45%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .bento-card:hover::before {
+            opacity: 1;
+        }
+
+        .bento-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Custom Scrollbar Minimalis */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 3px;
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <nav class="navbar">
-            <div class="brand-tag">
-                <span class="status-dot"></span>
-                <span>rizkyas.my.id // SPEC_SHEET_v2.6</span>
+<body class="bg-zinc-50 text-zinc-800 dark:bg-obsidian dark:text-zinc-200 bg-dot-grid antialiased selection:bg-sky-500/20 selection:text-sky-400 transition-colors duration-300">
+
+    <!-- Top Minimalist Header Bar -->
+    <header class="sticky top-0 z-40 border-b border-zinc-200/80 dark:border-borderDark/80 bg-zinc-50/80 dark:bg-obsidian/80 backdrop-blur-md">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="font-mono text-xs tracking-wider uppercase text-zinc-500 dark:text-zinc-400">
+                    SYS.PORTFOLIO // <span class="text-zinc-900 dark:text-zinc-100 font-semibold">RIZKY.AS</span>
+                </span>
             </div>
-            <button class="theme-toggle" id="themeToggle" aria-label="Ganti Tema">
-                <i class="fa-solid fa-sun" id="themeIcon"></i>
-                <span id="themeText">Light</span>
-            </button>
-        </nav>
 
-        <main class="bento-grid">
-            <!-- Hero & Profil -->
-            <section class="bento-card col-8 spotlight-card">
-                <div class="hero-header">
-                    <img src="foto-rizky.jpg.jpeg" alt="Rizky Aditya Saputra" class="avatar" onerror="this.src='https://ui-avatars.com/api/?name=Rizky+Aditya&background=38bdf8&color=09090b&bold=true'">
+            <div class="flex items-center gap-3">
+                <nav class="hidden sm:flex items-center gap-5 text-xs font-mono text-zinc-500 dark:text-zinc-400">
+                    <a href="#experience" class="hover:text-sky-500 dark:hover:text-accentCyan transition-colors">01.EXP</a>
+                    <a href="#education" class="hover:text-sky-500 dark:hover:text-accentCyan transition-colors">02.EDU</a>
+                    <a href="#skills" class="hover:text-sky-500 dark:hover:text-accentCyan transition-colors">03.SPEC</a>
+                    <a href="#projects" class="hover:text-sky-500 dark:hover:text-accentCyan transition-colors">04.PROJ</a>
+                    <a href="#contact" class="hover:text-sky-500 dark:hover:text-accentCyan transition-colors">05.CONTACT</a>
+                </nav>
+
+                <!-- Toggle Light/Dark Mode -->
+                <button id="themeToggle" aria-label="Toggle Theme" class="p-2 rounded-lg border border-zinc-200 dark:border-borderDark bg-white dark:bg-cardDark text-zinc-600 dark:text-zinc-400 hover:border-sky-500/50 dark:hover:border-accentCyan/50 hover:text-sky-500 dark:hover:text-accentCyan transition-all">
+                    <i id="themeIcon" class="fa-solid fa-sun text-xs"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Bento Grid Container -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        
+        <!-- BENTO GRID: HERO & PROFILE SUMMARY -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4">
+            
+            <!-- Card 1: Identitas Utama (8 Kolom) -->
+            <div class="bento-card md:col-span-8 rounded-2xl border border-zinc-200 dark:border-borderDark bg-white dark:bg-cardDark p-6 sm:p-8 flex flex-col justify-between">
+                <div>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-5 mb-6">
+                        <!-- Avatar / Foto dengan Fallback Inisial -->
+                        <div class="relative shrink-0 w-20 h-20 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 overflow-hidden flex items-center justify-center">
+                            <img src="foto-rizky.jpg.jpeg" alt="Rizky Aditya Saputra" 
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                 class="w-full h-full object-cover object-top">
+                            <div style="display: none;" class="w-full h-full items-center justify-center font-mono font-bold text-xl text-sky-500 dark:text-accentCyan">
+                                RA
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex flex-wrap items-center gap-2 mb-2">
+                                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md border border-sky-500/20 bg-sky-500/10 text-sky-600 dark:text-accentCyan font-mono text-[11px]">
+                                    <i class="fa-solid fa-microchip text-[10px]"></i>
+                                    <span>MECHANICAL & INFRASTRUCTURE</span>
+                                </div>
+                                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md border border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-mono text-[11px]">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                    <span>Open to Opportunities</span>
+                                </div>
+                            </div>
+                            <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+                                Rizky Aditya Saputra
+                            </h1>
+                            <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+                                Mechanical Technician & Mechanical Engineering Undergraduate
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                        Lulusan sekolah menengah penerbangan (Airframe & Powerplant) dengan fondasi teknis mekanikal, inspeksi kualitas (QC/NDT), dan pemeliharaan mesin industri di <span class="text-zinc-900 dark:text-zinc-200 font-medium">PT Tifico Fiber Indonesia</span>. Terbiasa bekerja presisi mengikuti standar keselamatan industri (LOTO), desain CAD 2D/3D, serta adaptif terhadap otomasi kerja.
+                    </p>
+                </div>
+
+                <!-- Action Bar -->
+                <div class="flex flex-wrap items-center gap-3 mt-6 pt-5 border-t border-zinc-100 dark:border-zinc-800/80">
+                    <a href="CV_Rizky_Aditya_Saputra.pdf" download="CV_Rizky_Aditya_Saputra.pdf" 
+                       class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-medium text-xs hover:bg-sky-600 dark:hover:bg-accentCyan dark:hover:text-zinc-950 transition-all">
+                        <i class="fa-solid fa-file-arrow-down"></i>
+                        <span>Unduh CV (PDF)</span>
+                    </a>
+                    <a href="https://wa.me/6285156360758" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-zinc-200 dark:border-borderDark bg-zinc-50 dark:bg-zinc-900/60 text-zinc-700 dark:text-zinc-300 font-medium text-xs hover:border-emerald-500/50 transition-all">
+                        <i class="fa-brands fa-whatsapp text-emerald-500"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="https://github.com/S1XT3EN" target="_blank" rel="noopener noreferrer"
+                       class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-zinc-200 dark:border-borderDark bg-zinc-50 dark:bg-zinc-900/60 text-zinc-700 dark:text-zinc-300 font-medium text-xs hover:border-sky-500/50 dark:hover:border-accentCyan/50 transition-all">
+                        <i class="fa-brands fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2: Quick Telemetry / Status Box (4 Kolom) -->
+            <div id="contact" class="bento-card md:col-span-4 rounded-2xl border border-zinc-200 dark:border-borderDark bg-white dark:bg-cardDark p-6 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="font-mono text-xs uppercase tracking-wider text-zinc-400">05 // SPEC & KONTAK</span>
+                        <i class="fa-solid fa-sliders text-zinc-400 text-xs"></i>
+                    </div>
+
+                    <div class="space-y-3 text-xs">
+                        <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/70 border border-zinc-100 dark:border-zinc-800/80">
+                            <span class="block font-mono text-[10px] text-zinc-400 uppercase">Domisili</span>
+                            <span class="font-medium text-zinc-800 dark:text-zinc-200 flex items-center gap-1.5 mt-0.5">
+                                <i class="fa-solid fa-location-dot text-sky-500 dark:text-accentCyan"></i>
+                                Kota Tangerang, Banten
+                            </span>
+                        </div>
+
+                        <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/70 border border-zinc-100 dark:border-zinc-800/80">
+                            <span class="block font-mono text-[10px] text-zinc-400 uppercase">Email Profesional</span>
+                            <div class="flex items-center justify-between mt-0.5">
+                                <a href="mailto:arrizky809@gmail.com" class="font-medium text-zinc-800 dark:text-zinc-200 hover:text-sky-500 dark:hover:text-accentCyan truncate">
+                                    arrizky809@gmail.com
+                                </a>
+                                <button onclick="copyEmail()" title="Salin Email" class="text-zinc-400 hover:text-sky-500 dark:hover:text-accentCyan ml-2">
+                                    <i id="copyIcon" class="fa-regular fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="p-2.5 rounded-lg bg-zinc-50 dark:bg-zinc-900/70 border border-zinc-100 dark:border-zinc-800/80">
+                            <span class="block font-mono text-[10px] text-zinc-400 uppercase">Repositori Kode</span>
+                            <a href="https://github.com/S1XT3EN" target="_blank" rel="noopener noreferrer" class="font-medium text-zinc-800 dark:text-zinc-200 hover:text-sky-500 dark:hover:text-accentCyan flex items-center gap-1.5 mt-0.5">
+                                <i class="fa-brands fa-github"></i>
+                                <span>github.com/S1XT3EN</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-zinc-400 ml-auto"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between font-mono text-[11px] text-zinc-500">
+                    <span>BAHASA</span>
+                    <span class="text-zinc-800 dark:text-zinc-300">ID (Native) / EN (Pro)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BENTO GRID: PENGALAMAN KERJA -->
+        <div id="experience" class="bento-card rounded-2xl border border-zinc-200 dark:border-borderDark bg-white dark:bg-cardDark p-6 sm:p-8 mb-4">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <span class="font-mono text-xs uppercase tracking-wider text-sky-600 dark:text-accentCyan">01 // RIWAYAT KERJA</span>
+                    <h2 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mt-0.5">Pengalaman Industri & Teknis</h2>
+                </div>
+                <span class="hidden sm:inline-block font-mono text-xs px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 text-zinc-500">
+                    INDUSTRIAL TRACK
+                </span>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Job 1: PT Tifico Fiber Indonesia -->
+                <div class="relative pl-6 border-l border-zinc-200 dark:border-zinc-800">
+                    <span class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-sky-500 dark:bg-accentCyan ring-4 ring-white dark:ring-cardDark"></span>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                        <div>
+                            <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Mechanical Technician — Maintenance Department</h3>
+                            <p class="text-xs font-medium text-sky-600 dark:text-accentCyan">PT. Tifico Fiber Indonesia Tbk</p>
+                        </div>
+                        <span class="font-mono text-xs text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-900 px-2.5 py-1 rounded self-start">
+                            2025 – Sekarang
+                        </span>
+                    </div>
+                    <ul class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 space-y-1.5 list-disc list-inside">
+                        <li>Melaksanakan preventive & corrective maintenance pada mesin produksi industri untuk menjaga keandalan operasional.</li>
+                        <li>Menerapkan prosedur keselamatan kerja standar industri termasuk Isolasi Energi / Lockout-Tagout (LOTO).</li>
+                        <li>Melakukan troubleshooting mekanikal dan inspeksi komponen presisi untuk meminimalkan downtime fasilitas.</li>
+                    </ul>
+                </div>
+
+                <!-- Job 2: PT Suprabakti Mandiri -->
+                <div class="relative pl-6 border-l border-zinc-200 dark:border-zinc-800">
+                    <span class="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-400 dark:bg-zinc-600 ring-4 ring-white dark:ring-cardDark"></span>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-2">
+                        <div>
+                            <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100">Quality Control Inspector</h3>
+                            <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400">PT. Suprabakti Mandiri</p>
+                        </div>
+                        <span class="font-mono text-xs text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-900 px-2.5 py-1 rounded self-start">
+                            2024 – 2025
+                        </span>
+                    </div>
+                    <ul class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 space-y-1.5 list-disc list-inside">
+                        <li>Melakukan inspeksi kualitas produk meliputi pemeriksaan dimensi presisi, visual, dan hasil pengelasan sesuai standar teknis.</li>
+                        <li>Melaksanakan uji Non-Destructive Test (NDT) meliputi Magnetic Particle Test (MPT) dan Penetrant Test.</li>
+                        <li>Berkoordinasi dengan tim fabrikasi dalam analisis akar masalah cacat produk (root cause) dan tindakan perbaikan.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- BENTO GRID: PENDIDIKAN, KEAHLIAN & SERTIFIKASI -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-4">
+            
+            <!-- Card Pendidikan (5 Kolom) -->
+            <div id="education" class="bento-card md:col-span-5 rounded-2xl border border-zinc-200 dark:border-borderDark bg-white dark:bg-cardDark p-6 flex flex-col justify-between">
+                <div>
+                    <span class="font-mono text-xs uppercase tracking-wider text-sky-600 dark:text-accentCyan">02 // AKADEMIK</span>
+                    <h2 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mt-0.5 mb-5">Pendidikan</h2>
+
+                    <div class="space-y-4">
+                        <div class="p-3.5 rounded-xl border border-zinc-100 dark:border-zinc-800/90 bg-zinc-50/70 dark:bg-zinc-900/50">
+                            <div class="flex items-center justify-between font-mono text-[11px] text-sky-600 dark:text-accentCyan mb-1">
+                                <span>2025 – SEKARANG</span>
+                                <span>S1</span>
+                            </div>
+                            <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">S1 Teknik Mesin</h3>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">Universitas Pamulang</p>
+                        </div>
+
+                        <div class="p-3.5 rounded-xl border border-zinc-100 dark:border-zinc-800/90 bg-zinc-50/70 dark:bg-zinc-900/50">
+                            <div class="flex items-center justify-between font-mono text-[11px] text-zinc-500 mb-1">
+                                <span>2019 – 2022</span>
+                                <span>US: 81.23</span>
+                            </div>
+                            <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Airframe & Powerplant</h3>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">SMKN 6 Tangerang (Penerbangan)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Keahlian & Sertifikasi (7 Kolom) -->
+            <div id="skills" class="bento-card md:col-span-7 rounded-2xl border border-zinc-200 dark:border-borderDark bg-white dark:bg-cardDark p-6">
+                <span class="font-mono text-xs uppercase tracking-wider text-sky-600 dark:text-accentCyan">03 // KOMPETENSI</span>
+                <h2 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mt-0.5 mb-4">Keahlian & Tools</h2>
+
+                <!-- Skill Tags (Termasuk Inventor 3D) -->
+                <div class="flex flex-wrap gap-2 mb-6">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-sky-500/30 bg-sky-500/5 dark:bg-sky-500/10 font-mono text-xs font-medium text-sky-700 dark:text-accentCyan">
+                        <i class="fa-solid fa-cubes"></i> Inventor 3D
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 font-mono text-xs text-zinc-800 dark:text-zinc-200">
+                        <i class="fa-solid fa-cube text-sky-500 dark:text-accentCyan"></i> AutoCAD 2D
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 font-mono text-xs text-zinc-800 dark:text-zinc-200">
+                        <i class="fa-solid fa-fire text-sky-500 dark:text-accentCyan"></i> Las GMAW 3G
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 font-mono text-xs text-zinc-800 dark:text-zinc-200">
+                        <i class="fa-solid fa-wrench text-sky-500 dark:text-accentCyan"></i> Preventive Maintenance
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 font-mono text-xs text-zinc-800 dark:text-zinc-200">
+                        <i class="fa-solid fa-file-excel text-sky-500 dark:text-accentCyan"></i> MS Office
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 font-mono text-xs text-zinc-800 dark:text-zinc-200">
+                        <i class="fa-solid fa-language text-sky-500 dark:text-accentCyan"></i> Bahasa Inggris
+                    </span>
+                </div>
+
+                <!-- Sertifikasi -->
+                <h3 class="font-mono text-xs uppercase tracking-wider text-zinc-400 mb-3">Sertifikat & Lisensi</h3>
+                <div class="space-y-2.5">
+                    <div class="flex items-center justify-between p-3 rounded-xl border border-zinc-100 dark:border-zinc-800/90 bg-zinc-50/70 dark:bg-zinc-900/50 text-xs">
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-certificate text-sky-500 dark:text-accentCyan"></i>
+                            <span class="font-medium text-zinc-800 dark:text-zinc-200">Pengelasan GMAW Posisi 3G</span>
+                        </div>
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-sky-500/10 text-sky-600 dark:text-accentCyan">BNSP</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 rounded-xl border border-zinc-100 dark:border-zinc-800/90 bg-zinc-50/70 dark:bg-zinc-900/50 text-xs">
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-certificate text-sky-500 dark:text-accentCyan"></i>
+                            <span class="font-medium text-zinc-800 dark:text-zinc-200">Penggambaran Model 3D dengan Sistem CAD</span>
+                        </div>
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-sky-500/10 text-sky-600 dark:text-accentCyan">BNSP</span>
+                    </div>
+
+                    <div class="flex items-center justify-between p-3 rounded-xl border border-zinc-100 dark:border-zinc-800/90 bg-zinc-50/70 dark:bg-zinc-900/50 text-xs">
+                        <div class="flex items-center gap-2.5">
+                            <i class="fa-solid fa-robot text-sky-500 dark:text-accentCyan"></i>
+                            <span class="font-medium text-zinc-800 dark:text-zinc-200">AI for Work & Career Readiness</span>
+                        </div>
+                        <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">HACKTIV8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BENTO GRID: FEATURED PROJECTS -->
+        <div id="projects" class="bento-card rounded-2xl border border-zinc-200 dark:border-borderDark bg-white dark:bg-cardDark p-6 sm:p-8">
+            <div class="flex items-center justify-between mb-5">
+                <div>
+                    <span class="font-mono text-xs uppercase tracking-wider text-sky-600 dark:text-accentCyan">04 // KARYA & SISTEM</span>
+                    <h2 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mt-0.5">Featured Projects</h2>
+                </div>
+                <a href="https://github.com/S1XT3EN" target="_blank" rel="noopener noreferrer" class="font-mono text-xs text-zinc-500 hover:text-sky-500 dark:hover:text-accentCyan flex items-center gap-1.5">
+                    <span>ALL REPOS</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Project 1 -->
+                <div class="p-4 rounded-xl border border-zinc-100 dark:border-zinc-800/90 bg-zinc-50/70 dark:bg-zinc-900/50 flex flex-col justify-between">
                     <div>
-                        <span class="role-badge">MECHANICAL TECHNICIAN // ENGINEERING STUDENT</span>
-                        <h1>Rizky Aditya Saputra</h1>
-                        <p class="subtitle">Maintenance Technician at PT Tifico Fiber Indonesia &bull; S1 Teknik Mesin UNPAM</p>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-mono text-[11px] text-sky-600 dark:text-accentCyan">INDUSTRIAL UTILITY</span>
+                            <i class="fa-solid fa-gear text-zinc-400 text-xs"></i>
+                        </div>
+                        <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Maintenance AI Assistant</h3>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1.5 leading-relaxed">
+                            Aplikasi berbasis web untuk menyusun draf Work Order (WO) pemeliharaan mesin dan prosedur isolasi energi Lockout-Tagout (LOTO) secara terstruktur.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 mt-4 pt-3 border-t border-zinc-200/60 dark:border-zinc-800 font-mono text-[10px] text-zinc-500">
+                        <span>HTML5</span>
+                        <span>•</span>
+                        <span>TAILWIND</span>
+                        <span>•</span>
+                        <span>LOTO SPEC</span>
                     </div>
                 </div>
-                <p class="bio-text">
-                    Teknisi pemeliharaan mekanik dengan sertifikasi nasional BNSP pada bidang <strong>3D CAD Modeling</strong> dan <strong>Pengelasan GMAW 3G</strong>. Berfokus pada keandalan sistem industri, fabrikasi presisi, serta transisi karir menuju <strong>Data Center Infrastructure & Maintenance</strong>.
-                </p>
-                <div class="cta-group">
-                    <a href="CV_Rizky_Aditya_Saputra.pdf" download="CV_Rizky_Aditya_Saputra.pdf" class="btn btn-primary">
-                        <i class="fa-solid fa-file-arrow-down"></i> Unduh CV (PDF)
-                    </a>
-                    <a href="https://wa.me/6285156360758" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-                        <i class="fa-brands fa-whatsapp"></i> Hubungi via WA
-                    </a>
-                </div>
-            </section>
 
-            <!-- Kontak & Metadata -->
-            <section class="bento-card col-4 spotlight-card">
-                <div class="card-label"><i class="fa-solid fa-satellite-dish"></i> KONEKSI & LOKASI</div>
-                <ul class="meta-list">
-                    <li>
-                        <span class="meta-key">DOMISILI</span>
-                        <span class="meta-val">Kota Tangerang, Banten</span>
-                    </li>
-                    <li>
-                        <span class="meta-key">EMAIL</span>
-                        <a href="mailto:arrizky809@gmail.com" class="meta-link">arrizky809@gmail.com</a>
-                    </li>
-                    <li>
-                        <span class="meta-key">GITHUB</span>
-                        <a href="https://github.com/S1XT3EN" target="_blank" rel="noopener noreferrer" class="meta-link">github.com/S1XT3EN</a>
-                    </li>
-                    <li>
-                        <span class="meta-key">STATUS</span>
-                        <span class="meta-val">Aktif Bekerja & Kuliah</span>
-                    </li>
-                </ul>
-            </section>
-
-            <!-- Keahlian & Tools -->
-            <section class="bento-card col-6 spotlight-card">
-                <div class="card-label"><i class="fa-solid fa-microchip"></i> KEAHLIAN TEKNIS & TOOLS</div>
-                <div class="skills-wrap">
-                    <span class="skill-pill highlight"><i class="fa-solid fa-cubes"></i> Inventor 3D</span>
-                    <span class="skill-pill highlight"><i class="fa-solid fa-cube"></i> AutoCAD 2D</span>
-                    <span class="skill-pill highlight"><i class="fa-solid fa-fire"></i> Las GMAW 3G</span>
-                    <span class="skill-pill"><i class="fa-solid fa-gears"></i> Preventive Maintenance</span>
-                    <span class="skill-pill"><i class="fa-solid fa-bolt"></i> Distribusi Listrik Dasar</span>
-                    <span class="skill-pill"><i class="fa-solid fa-file-excel"></i> MS Office & Excel</span>
-                    <span class="skill-pill"><i class="fa-solid fa-code"></i> HTML / CSS / Git</span>
-                </div>
-            </section>
-
-            <!-- Sertifikasi BNSP -->
-            <section class="bento-card col-6 spotlight-card">
-                <div class="card-label"><i class="fa-solid fa-certificate"></i> LISENSI & SERTIFIKASI</div>
-                <div class="cert-list">
-                    <div class="cert-item">
-                        <span class="cert-code">BNSP</span>
-                        <div>
-                            <strong>Penggambaran Model 3D dengan Sistem CAD</strong>
-                            <small>Kompetensi Nasional Desain Teknik & Manufaktur</small>
+                <!-- Project 2 -->
+                <div class="p-4 rounded-xl border border-zinc-100 dark:border-zinc-800/90 bg-zinc-50/70 dark:bg-zinc-900/50 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-mono text-[11px] text-sky-600 dark:text-accentCyan">WEB ARCHITECTURE</span>
+                            <i class="fa-solid fa-terminal text-zinc-400 text-xs"></i>
                         </div>
+                        <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Personal Web Portfolio (rizkyas.my.id)</h3>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1.5 leading-relaxed">
+                            Sistem portofolio digital berarsitektur Bento Grid & Technical Blueprint yang responsif dengan fitur manajemen tema Light/Dark serta efisiensi akses dokumen CV.
+                        </p>
                     </div>
-                    <div class="cert-item">
-                        <span class="cert-code">BNSP</span>
-                        <div>
-                            <strong>Pengelasan GMAW Posisi 3G</strong>
-                            <small>Kompetensi Nasional Fabrikasi & Penyambungan Logam</small>
-                        </div>
-                    </div>
-                    <div class="cert-item">
-                        <span class="cert-code">CERT</span>
-                        <div>
-                            <strong>AI for Work & Career Readiness</strong>
-                            <small>Hacktiv8 &bull; Otomasi Alur Kerja Teknis</small>
-                        </div>
+                    <div class="flex items-center gap-2 mt-4 pt-3 border-t border-zinc-200/60 dark:border-zinc-800 font-mono text-[10px] text-zinc-500">
+                        <span>BENTO GRID</span>
+                        <span>•</span>
+                        <span>RESPONSIVE</span>
+                        <span>•</span>
+                        <span>GITHUB PAGES</span>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
 
-            <!-- Pengalaman & Pendidikan -->
-            <section class="bento-card col-7 spotlight-card">
-                <div class="card-label"><i class="fa-solid fa-briefcase"></i> PENGALAMAN & PENDIDIKAN</div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-head">
-                            <strong>Mechanical Technician (Maintenance)</strong>
-                            <span class="year-tag">2024 — SEKARANG</span>
-                        </div>
-                        <p class="org-name">PT Tifico Fiber Indonesia</p>
-                        <p class="desc-text">Pemeliharaan preventif dan korektif mesin produksi, analisis kerusakan komponen mekanik, serta pemenuhan standar keselamatan kerja (LOTO).</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-head">
-                            <strong>S1 Teknik Mesin (Semester 3)</strong>
-                            <span class="year-tag">2025 — SEKARANG</span>
-                        </div>
-                        <p class="org-name">Universitas Pamulang — Kampus Witana Harja</p>
-                        <p class="desc-text">Fokus pada Elemen Mesin, Proses Produksi, Dinamika Fluida, dan Sistem Distribusi Tenaga Listrik.</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-head">
-                            <strong>Teknik Pemesinan</strong>
-                            <span class="year-tag">2019 — 2022</span>
-                        </div>
-                        <p class="org-name">SMKN 6 Tangerang</p>
-                        <p class="desc-text">Lulus dengan nilai rata-rata US 81.23. Dasar pengoperasian mesin bubut, frais, dan gambar teknik.</p>
-                    </div>
-                </div>
-            </section>
+    </main>
 
-            <!-- Featured Projects -->
-            <section class="bento-card col-5 spotlight-card">
-                <div class="card-label"><i class="fa-solid fa-folder-open"></i> FEATURED PROJECTS</div>
-                <div class="project-list">
-                    <div class="project-item">
-                        <div class="project-top">
-                            <strong>Maintenance AI Assistant</strong>
-                            <span class="tech-tag">AUTOMATION</span>
-                        </div>
-                        <p>Alur kerja otomatis pembuat Work Order HTML terstruktur lengkap dengan prosedur keselamatan Lockout/Tagout (LOTO).</p>
-                    </div>
-                    <div class="project-item">
-                        <div class="project-top">
-                            <strong>3D Mechanical Assembly</strong>
-                            <span class="tech-tag">INVENTOR 3D</span>
-                        </div>
-                        <p>Pemodelan komponen mekanik presisi, gambar kerja 2D standar ISO, dan simulasi perakitan suku cadang.</p>
-                    </div>
-                    <div class="project-item">
-                        <div class="project-top">
-                            <strong>Personal Spec Portfolio</strong>
-                            <span class="tech-tag">WEB / GIT</span>
-                        </div>
-                        <p>Web portofolio statis berarsitektur Bento Grid yang di-host di GitHub Pages dengan custom domain.</p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer class="footer">
+    <!-- Minimalist Footer -->
+    <footer class="border-t border-zinc-200/80 dark:border-borderDark/80 py-6 mt-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs font-mono text-zinc-500">
             <span>&copy; 2026 Rizky Aditya Saputra</span>
-            <span>BUILT WITH PRECISION // TANGERANG, ID</span>
-        </footer>
+            <span>BUILT WITH INDUSTRIAL MINIMALISM // RIZKYAS.MY.ID</span>
+        </div>
+    </footer>
+
+    <!-- Toast Notification untuk Copy Email -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 px-4 py-2.5 rounded-lg bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 font-mono text-xs shadow-lg transform translate-y-20 opacity-0 transition-all duration-300">
+        Email disalin ke clipboard!
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // 1. Efek Spotlight Kursor Halus pada Bento Card
+        const cards = document.querySelectorAll('.bento-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // 2. Toggle Light / Dark Mode
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const htmlEl = document.documentElement;
+
+        function setTheme(isDark) {
+            if (isDark) {
+                htmlEl.classList.add('dark');
+                themeIcon.className = 'fa-solid fa-sun text-xs';
+                localStorage.setItem('bento-theme', 'dark');
+            } else {
+                htmlEl.classList.remove('dark');
+                themeIcon.className = 'fa-solid fa-moon text-xs';
+                localStorage.setItem('bento-theme', 'light');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('bento-theme');
+        if (savedTheme === 'light') {
+            setTheme(false);
+        } else {
+            setTheme(true);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isCurrentlyDark = htmlEl.classList.contains('dark');
+            setTheme(!isCurrentlyDark);
+        });
+
+        // 3. Copy Email dengan Fallback Aman
+        function copyEmail() {
+            const email = 'arrizky809@gmail.com';
+            const tempInput = document.createElement('input');
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            const copyIcon = document.getElementById('copyIcon');
+            const toast = document.getElementById('toast');
+            
+            copyIcon.className = 'fa-solid fa-check text-emerald-500';
+            toast.classList.remove('translate-y-20', 'opacity-0');
+
+            setTimeout(() => {
+                copyIcon.className = 'fa-regular fa-copy';
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2200);
+        }
+    </script>
 </body>
 </html>
