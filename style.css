@@ -537,10 +537,9 @@ footer {
 .info-item a {
     color: var(--text-main);
     text-decoration: none;
-    transition: color 0.2s ease;
 }
 
 .info-item a:hover {
-    color: var(--accent-blue);
-    text-decoration: underline;
+    color: var(--text-main);
+    text-decoration: none;
 }
