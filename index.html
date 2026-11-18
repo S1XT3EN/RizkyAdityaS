@@ -1,256 +1,183 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio - Rizky Aditya Saputra</title>
-    <!-- Favicon -->
-    <link rel="icon" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/svgs/solid/user-gear.svg" type="image/svg+xml">
-    <!-- FontAwesome Font -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- External CSS -->
+    <title>Rizky Aditya Saputra — Portfolio & Technical Spec</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- Tombol Floating Melayang (Desktop & Mobile) -->
-<button class="floating-toggle-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Menu Navigasi">
-    <i class="fa-solid fa-bars" id="menuIcon"></i>
-</button>
-
-<!-- Menu Pop-up Navbar -->
-<nav id="navbar">
-    <div class="nav-logo">
-        Navigation Bar
-    </div>
-    <ul class="nav-links">
-        <li><a href="#tentang" onclick="closeMenu()"><i class="fa-solid fa-user-gear"></i> Tentang</a></li>
-        <li><a href="#pengalaman" onclick="closeMenu()"><i class="fa-solid fa-briefcase"></i> Pengalaman</a></li>
-        <li><a href="#pendidikan" onclick="closeMenu()"><i class="fa-solid fa-graduation-cap"></i> Pendidikan</a></li>
-        <li><a href="#keahlian" onclick="closeMenu()"><i class="fa-solid fa-screwdriver-wrench"></i> Keahlian</a></li>
-        <!-- Opsi Switch Theme -->
-        <li>
-            <button class="theme-toggle-option" onclick="toggleTheme()">
-                <i class="fa-solid fa-moon" id="themeIcon"></i> <span id="themeText">Mode Terang</span>
+    <div class="container">
+        <nav class="navbar">
+            <div class="brand-tag">
+                <span class="status-dot"></span>
+                <span>rizkyas.my.id // SPEC_SHEET_v2.6</span>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Ganti Tema">
+                <i class="fa-solid fa-sun" id="themeIcon"></i>
+                <span id="themeText">Light</span>
             </button>
-        </li>
-        <li><a href="#kontak" class="nav-btn" onclick="closeMenu()"><i class="fa-solid fa-paper-plane"></i> Kontak</a></li>
-    </ul>
-</nav>
+        </nav>
 
-<div class="container">
-    <header>
-        <div class="profile-img-container">
-            <img src="foto-rizky.jpg.jpeg" alt="Rizky Aditya Saputra" class="profile-img">
-        </div>
-        <div class="header-text">
-            <h1>Rizky Aditya Saputra</h1>
-            <p><i class="fa-solid fa-graduation-cap"></i> Mahasiswa S1 Teknik Mesin & Operational/QC Specialist</p>
-            <a href="CV_Rizky Aditya Saputra.pdf" class="btn-download" download="Cv_Rizky Aditya Saputra.pdf" >
-                <i class="fa-solid fa-file-arrow-down"></i> Unduh CV (PDF)
-            </a>
-        </div>
-    </header>
-
-    <div class="main-content">
-        <div class="left-col">
-            <section id="tentang">
-                <h2><i class="fa-solid fa-user-gear"></i> Tentang Saya</h2>
-                <p class="summary-text">Sebagai lulusan sekolah menengah penerbangan dengan dasar pengetahuan teknis yang kuat, saya terbiasa bekerja secara teliti, terstruktur, dan sesuai prosedur. Memiliki motivasi tinggi untuk belajar hal baru, mudah beradaptasi dengan lingkungan kerja, serta berkomitmen untuk terus mengembangkan kemampuan. Siap memberikan kontribusi terbaik dalam menghadapi berbagai tantangan dalam dunia kerja.</p>
+        <main class="bento-grid">
+            <!-- Hero & Profil -->
+            <section class="bento-card col-8 spotlight-card">
+                <div class="hero-header">
+                    <img src="foto-rizky.jpg.jpeg" alt="Rizky Aditya Saputra" class="avatar" onerror="this.src='https://ui-avatars.com/api/?name=Rizky+Aditya&background=38bdf8&color=09090b&bold=true'">
+                    <div>
+                        <span class="role-badge">MECHANICAL TECHNICIAN // ENGINEERING STUDENT</span>
+                        <h1>Rizky Aditya Saputra</h1>
+                        <p class="subtitle">Maintenance Technician at PT Tifico Fiber Indonesia &bull; S1 Teknik Mesin UNPAM</p>
+                    </div>
+                </div>
+                <p class="bio-text">
+                    Teknisi pemeliharaan mekanik dengan sertifikasi nasional BNSP pada bidang <strong>3D CAD Modeling</strong> dan <strong>Pengelasan GMAW 3G</strong>. Berfokus pada keandalan sistem industri, fabrikasi presisi, serta transisi karir menuju <strong>Data Center Infrastructure & Maintenance</strong>.
+                </p>
+                <div class="cta-group">
+                    <a href="CV_Rizky_Aditya_Saputra.pdf" download="CV_Rizky_Aditya_Saputra.pdf" class="btn btn-primary">
+                        <i class="fa-solid fa-file-arrow-down"></i> Unduh CV (PDF)
+                    </a>
+                    <a href="https://wa.me/6285156360758" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        <i class="fa-brands fa-whatsapp"></i> Hubungi via WA
+                    </a>
+                </div>
             </section>
 
-            <section id="pengalaman">
-                <h2><i class="fa-solid fa-briefcase"></i> Proyek & Pengalaman Kerja</h2>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <div class="company-logo-icon">
-                            <i class="fa-solid fa-microscope"></i>
-                        </div>
+            <!-- Kontak & Metadata -->
+            <section class="bento-card col-4 spotlight-card">
+                <div class="card-label"><i class="fa-solid fa-satellite-dish"></i> KONEKSI & LOKASI</div>
+                <ul class="meta-list">
+                    <li>
+                        <span class="meta-key">DOMISILI</span>
+                        <span class="meta-val">Kota Tangerang, Banten</span>
+                    </li>
+                    <li>
+                        <span class="meta-key">EMAIL</span>
+                        <a href="mailto:arrizky809@gmail.com" class="meta-link">arrizky809@gmail.com</a>
+                    </li>
+                    <li>
+                        <span class="meta-key">GITHUB</span>
+                        <a href="https://github.com/S1XT3EN" target="_blank" rel="noopener noreferrer" class="meta-link">github.com/S1XT3EN</a>
+                    </li>
+                    <li>
+                        <span class="meta-key">STATUS</span>
+                        <span class="meta-val">Aktif Bekerja & Kuliah</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Keahlian & Tools -->
+            <section class="bento-card col-6 spotlight-card">
+                <div class="card-label"><i class="fa-solid fa-microchip"></i> KEAHLIAN TEKNIS & TOOLS</div>
+                <div class="skills-wrap">
+                    <span class="skill-pill highlight"><i class="fa-solid fa-cubes"></i> Inventor 3D</span>
+                    <span class="skill-pill highlight"><i class="fa-solid fa-cube"></i> AutoCAD 2D</span>
+                    <span class="skill-pill highlight"><i class="fa-solid fa-fire"></i> Las GMAW 3G</span>
+                    <span class="skill-pill"><i class="fa-solid fa-gears"></i> Preventive Maintenance</span>
+                    <span class="skill-pill"><i class="fa-solid fa-bolt"></i> Distribusi Listrik Dasar</span>
+                    <span class="skill-pill"><i class="fa-solid fa-file-excel"></i> MS Office & Excel</span>
+                    <span class="skill-pill"><i class="fa-solid fa-code"></i> HTML / CSS / Git</span>
+                </div>
+            </section>
+
+            <!-- Sertifikasi BNSP -->
+            <section class="bento-card col-6 spotlight-card">
+                <div class="card-label"><i class="fa-solid fa-certificate"></i> LISENSI & SERTIFIKASI</div>
+                <div class="cert-list">
+                    <div class="cert-item">
+                        <span class="cert-code">BNSP</span>
                         <div>
-                            <h3>Helper QC</h3>
-                            <div class="subtitle">PT. Suprabakti Mandiri</div>
+                            <strong>Penggambaran Model 3D dengan Sistem CAD</strong>
+                            <small>Kompetensi Nasional Desain Teknik & Manufaktur</small>
                         </div>
                     </div>
-                    <div class="date"><i class="fa-regular fa-calendar-days"></i> 2024 – 2025</div>
-                    <ul>
-                        <li>Bertanggung jawab melakukan inspeksi kualitas produk meliputi pemeriksaan dimensi, visual, dan hasil pengelasan sesuai standar yang ditetapkan.</li>
-                        <li>Melaksanakan uji <i>non-destructive test</i> (NDT) seperti <i>Magnetic Particle Test</i> (MPT) dan <i>Penetrant Test</i>.</li>
-                        <li>Berkoordinasi dengan tim produksi untuk menganalisis penyebab cacat produk dan mencari solusi perbaikan yang efektif.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="company-logo-icon">
-                            <i class="fa-solid fa-boxes-stacked"></i>
-                        </div>
+                    <div class="cert-item">
+                        <span class="cert-code">BNSP</span>
                         <div>
-                            <h3>Checker Gudang</h3>
-                            <div class="subtitle">PT. Paragon Technology And Innovation</div>
+                            <strong>Pengelasan GMAW Posisi 3G</strong>
+                            <small>Kompetensi Nasional Fabrikasi & Penyambungan Logam</small>
                         </div>
                     </div>
-                    <div class="date"><i class="fa-regular fa-calendar-days"></i> 2023 – 2024</div>
-                    <ul>
-                        <li>Bertanggung jawab melakukan pengambilan barang sesuai <i>request</i> yang tertera di kertas order, memastikan ketepatan jenis dan jumlah barang.</li>
-                        <li>Menyusun palet sesuai standar penataan di area gudang.</li>
-                        <li>Memindahkan barang menggunakan <i>hand pallet</i>, kemudian menaikkan barang ke truk pengangkut untuk proses pengiriman dari gudang ke pabrik produksi.</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="company-logo-icon">
-                            <i class="fa-solid fa-building-columns"></i>
-                        </div>
+                    <div class="cert-item">
+                        <span class="cert-code">CERT</span>
                         <div>
-                            <h3>Relationship Officer</h3>
-                            <div class="subtitle">PT. Bank Permata</div>
+                            <strong>AI for Work & Career Readiness</strong>
+                            <small>Hacktiv8 &bull; Otomasi Alur Kerja Teknis</small>
                         </div>
                     </div>
-                    <div class="date"><i class="fa-regular fa-calendar-days"></i> 2023</div>
-                    <ul>
-                        <li>Menjaga hubungan baik dengan nasabah serta calon nasabah untuk membangun kepercayaan dan loyalitas.</li>
-                        <li>Memberikan solusi keuangan yang sesuai dengan kebutuhan nasabah.</li>
-                        <li>Menjelaskan detail produk pinjaman dan kartu kredit dengan jelas dan informatif.</li>
-                    </ul>
                 </div>
             </section>
 
-            <section id="pendidikan">
-                <h2><i class="fa-solid fa-graduation-cap"></i> Pendidikan</h2>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <div class="company-logo-icon">
-                            <i class="fa-solid fa-university"></i>
+            <!-- Pengalaman & Pendidikan -->
+            <section class="bento-card col-7 spotlight-card">
+                <div class="card-label"><i class="fa-solid fa-briefcase"></i> PENGALAMAN & PENDIDIKAN</div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-head">
+                            <strong>Mechanical Technician (Maintenance)</strong>
+                            <span class="year-tag">2024 — SEKARANG</span>
                         </div>
-                        <div>
-                            <h3>S1 Teknik Mesin</h3>
-                            <div class="subtitle">Universitas Pamulang</div>
-                        </div>
+                        <p class="org-name">PT Tifico Fiber Indonesia</p>
+                        <p class="desc-text">Pemeliharaan preventif dan korektif mesin produksi, analisis kerusakan komponen mekanik, serta pemenuhan standar keselamatan kerja (LOTO).</p>
                     </div>
-                    <div class="date"><i class="fa-regular fa-calendar-days"></i> 2025 – Sekarang</div>
-                    <p style="font-size:0.9rem;">Status: Mahasiswa Aktif (Semester 3)</p>
-                </div>
-
-                <div class="card">
-                    <div class="card-header">
-                        <div class="company-logo-icon">
-                            <i class="fa-solid fa-plane"></i>
+                    <div class="timeline-item">
+                        <div class="timeline-head">
+                            <strong>S1 Teknik Mesin (Semester 3)</strong>
+                            <span class="year-tag">2025 — SEKARANG</span>
                         </div>
-                        <div>
-                            <h3>Airframe & Powerplant</h3>
-                            <div class="subtitle">SMKN 6 Tangerang</div>
-                        </div>
+                        <p class="org-name">Universitas Pamulang — Kampus Witana Harja</p>
+                        <p class="desc-text">Fokus pada Elemen Mesin, Proses Produksi, Dinamika Fluida, dan Sistem Distribusi Tenaga Listrik.</p>
                     </div>
-                    <div class="date"><i class="fa-regular fa-calendar-days"></i> 2019 – 2022</div>
-                    <p style="font-size:0.9rem;">Status: Lulus (Nilai rata-rata US: 81.23)</p>
-                </div>
-            </section>
-        </div>
-
-        <div class="right-col">
-            <section id="kontak">
-                <h2><i class="fa-solid fa-address-card"></i> Kontak</h2>
-                <div class="info-card-box">
-                    <ul class="info-list">
-                        <li>
-                            <i class="fa-brands fa-whatsapp"></i>
-                            <div class="info-item">
-                                <strong>WhatsApp:</strong>
-                                <a href="https://wa.me/6285156360758" target="_blank" rel="noopener noreferrer">Click Here</a>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-envelope"></i>
-                            <div class="info-item">
-                                <strong>Email:</strong>
-                                <span>arrizky809@gmail.com</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-location-dot"></i>
-                            <div class="info-item">
-                                <strong>Alamat:</strong>
-                                <span>Kota Tangerang, Banten</span>
-                            </div>
-                        </li>
-                    </ul>
+                    <div class="timeline-item">
+                        <div class="timeline-head">
+                            <strong>Teknik Pemesinan</strong>
+                            <span class="year-tag">2019 — 2022</span>
+                        </div>
+                        <p class="org-name">SMKN 6 Tangerang</p>
+                        <p class="desc-text">Lulus dengan nilai rata-rata US 81.23. Dasar pengoperasian mesin bubut, frais, dan gambar teknik.</p>
+                    </div>
                 </div>
             </section>
 
-            <section>
-                <h2><i class="fa-solid fa-id-card"></i> Data Diri</h2>
-                <div class="info-card-box">
-                    <ul class="info-list">
-                        <li>
-                            <i class="fa-solid fa-cake-candles"></i>
-                            <div class="info-item">
-                                <strong>Umur:</strong>
-                                <span>22 Tahun</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-ruler-vertical"></i>
-                            <div class="info-item">
-                                <strong>Postur:</strong>
-                                <span>165 cm / 59 kg</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-camera"></i>
-                            <div class="info-item">
-                                <strong>Hobi:</strong>
-                                <span>Fotografi & Memancing</span>
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-language"></i>
-                            <div class="info-item">
-                                <strong>Bahasa:</strong>
-                                <span>Indonesia, Inggris</span>
-                            </div>
-                        </li>
-                    </ul>
+            <!-- Featured Projects -->
+            <section class="bento-card col-5 spotlight-card">
+                <div class="card-label"><i class="fa-solid fa-folder-open"></i> FEATURED PROJECTS</div>
+                <div class="project-list">
+                    <div class="project-item">
+                        <div class="project-top">
+                            <strong>Maintenance AI Assistant</strong>
+                            <span class="tech-tag">AUTOMATION</span>
+                        </div>
+                        <p>Alur kerja otomatis pembuat Work Order HTML terstruktur lengkap dengan prosedur keselamatan Lockout/Tagout (LOTO).</p>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-top">
+                            <strong>3D Mechanical Assembly</strong>
+                            <span class="tech-tag">INVENTOR 3D</span>
+                        </div>
+                        <p>Pemodelan komponen mekanik presisi, gambar kerja 2D standar ISO, dan simulasi perakitan suku cadang.</p>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-top">
+                            <strong>Personal Spec Portfolio</strong>
+                            <span class="tech-tag">WEB / GIT</span>
+                        </div>
+                        <p>Web portofolio statis berarsitektur Bento Grid yang di-host di GitHub Pages dengan custom domain.</p>
+                    </div>
                 </div>
             </section>
+        </main>
 
-            <section id="keahlian">
-                <h2><i class="fa-solid fa-screwdriver-wrench"></i> Keahlian & Tools</h2>
-                <div class="tools-grid">
-                    <div class="tool-badge"><i class="fa-solid fa-file-word"></i> MS Office</div>
-                    <div class="tool-badge"><i class="fa-solid fa-cube"></i> AutoCAD 2D</div>
-                    <div class="tool-badge"><i class="fa-solid fa-cubes"></i> Inventor 3D</div>
-                    <div class="tool-badge"><i class="fa-solid fa-fire"></i> Las GMAW 3G</div>
-                    <div class="tool-badge"><i class="fa-solid fa-language"></i> Bahasa Inggris</div>
-                </div>
-            </section>
-
-            <section style="margin-top:25px;">
-                <h2><i class="fa-solid fa-certificate"></i> Sertifikat</h2>
-                <div class="cert-card">
-                    <i class="fa-solid fa-award"></i>
-                    <div>BNSP Las GMAW 3G</div>
-                </div>
-                <div class="cert-card">
-                    <i class="fa-solid fa-award"></i>
-                    <div>BNSP Penggambaran 3D dengan CAD</div>
-                </div>
-                <div class="cert-card">
-                    <i class="fa-solid fa-award"></i>
-                    <div>MS Office & Kesekretariatan Bagi Pemula</div>
-                </div>
-            </section>
-        </div>
+        <footer class="footer">
+            <span>&copy; 2026 Rizky Aditya Saputra</span>
+            <span>BUILT WITH PRECISION // TANGERANG, ID</span>
+        </footer>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Rizky Aditya Saputra. All Rights Reserved.</p>
-    </footer>
-</div>
-
-<!-- External JavaScript -->
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

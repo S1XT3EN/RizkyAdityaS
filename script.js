@@ -1,80 +1,40 @@
-const navbar = document.getElementById('navbar');
-const menuIcon = document.getElementById('menuIcon');
-const themeIcon = document.getElementById('themeIcon');
-const themeText = document.getElementById('themeText');
+document.addEventListener('DOMContentLoaded', () => {
+    const htmlElement = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeText = document.getElementById('themeText');
 
-function toggleMenu() {
-    navbar.classList.toggle('active');
-    if (navbar.classList.contains('active')) {
-        menuIcon.classList.remove('fa-bars');
-        ('fa-xmark');
-    } else {
-        menuIcon.classList.remove('fa-xmark');
-        menuIcon.classList.add('fa-bars');
-    }
-}
+    // Load saved theme
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+    applyTheme(savedTheme);
 
-function closeMenu() {
-    navbar.classList.remove('active');
-    menuIcon.classList.remove('fa-xmark');
-    menuIcon.classList.add('fa-bars');
-}
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(nextTheme);
+        localStorage.setItem('portfolio-theme', nextTheme);
+    });
 
-// --- LOGIKA LIGHT / DARK MODE ---
-function updateThemeUI(theme) {
-    if (theme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        themeIcon.className = 'fa-solid fa-sun';
-        themeText.textContent = 'Mode Gelap';
-    } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        themeIcon.className = 'fa-solid fa-moon';
-        themeText.textContent = 'Mode Terang';
-    }
-}
-
-function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme', newTheme);
-    updateThemeUI(newTheme);
-}
-
-const savedTheme = localStorage.getItem('theme');
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-if (savedTheme) {
-    updateThemeUI(savedTheme);
-} else if (!prefersDark) {
-    updateThemeUI('light');
-} else {
-    updateThemeUI('dark');
-}
-
-// --- FITUR INTERAKTIF 3D PERSISTEN (TAHAN SAAT DI-TAP) ---
-const interactiveElements = document.querySelectorAll('.card, .info-card-box, .tool-badge, .cert-card, .summary-text');
-
-function removeAllActiveClasses() {
-    interactiveElements.forEach(el => el.classList.remove('is-active'));
-}
-
-interactiveElements.forEach(el => {
-    el.addEventListener('click', function(e) {
-        e.stopPropagation();
-        if (this.classList.contains('is-active')) {
-            this.classList.remove('is-active');
+    function applyTheme(theme) {
+        htmlElement.setAttribute('data-theme', theme);
+        if (theme === 'light') {
+            themeIcon.className = 'fa-solid fa-moon';
+            themeText.textContent = 'Dark';
         } else {
-            removeAllActiveClasses();
-            this.classList.add('is-active');
+            themeIcon.className = 'fa-solid fa-sun';
+            themeText.textContent = 'Light';
         }
+    }
+
+    // Subtle cursor spotlight effect on Bento cards
+    const cards = document.querySelectorAll('.spotlight-card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
     });
 });
-
-// Hilangkan efek aktif jika melakukan Tap di tempat kosong atau saat Scroll
-document.addEventListener('click', function() {
-    removeAllActiveClasses();
-});
-
-window.addEventListener('scroll', function() {
-    removeAllActiveClasses();
-}, {passive: true});
